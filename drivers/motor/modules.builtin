@@ -1,0 +1,2 @@
+kernel/drivers/motor/max8997_vibrator.ko
+kernel/drivers/motor/vibrator.ko

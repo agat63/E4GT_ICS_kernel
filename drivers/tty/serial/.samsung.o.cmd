@@ -585,6 +585,7 @@ deps_drivers/tty/serial/samsung.o := \
     $(wildcard include/config/cpu/freq/default/gov/interactive.h) \
     $(wildcard include/config/cpu/freq/default/gov/adaptive.h) \
     $(wildcard include/config/cpu/freq/default/gov/pegasusq.h) \
+    $(wildcard include/config/cpu/freq/default/gov/smartass2.h) \
   arch/arm/mach-exynos/include/mach/hardware.h \
   arch/arm/mach-exynos/include/mach/map.h \
   arch/arm/plat-samsung/include/plat/map-base.h \

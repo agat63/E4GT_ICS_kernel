@@ -452,6 +452,7 @@ deps_arch/arm/mach-exynos/busfreq.o := \
     $(wildcard include/config/cpu/freq/default/gov/interactive.h) \
     $(wildcard include/config/cpu/freq/default/gov/adaptive.h) \
     $(wildcard include/config/cpu/freq/default/gov/pegasusq.h) \
+    $(wildcard include/config/cpu/freq/default/gov/smartass2.h) \
   include/linux/suspend.h \
     $(wildcard include/config/vt.h) \
     $(wildcard include/config/vt/console.h) \

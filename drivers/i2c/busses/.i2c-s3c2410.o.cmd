@@ -518,6 +518,7 @@ deps_drivers/i2c/busses/i2c-s3c2410.o := \
     $(wildcard include/config/cpu/freq/default/gov/interactive.h) \
     $(wildcard include/config/cpu/freq/default/gov/adaptive.h) \
     $(wildcard include/config/cpu/freq/default/gov/pegasusq.h) \
+    $(wildcard include/config/cpu/freq/default/gov/smartass2.h) \
   include/linux/slab.h \
     $(wildcard include/config/slab/debug.h) \
     $(wildcard include/config/failslab.h) \

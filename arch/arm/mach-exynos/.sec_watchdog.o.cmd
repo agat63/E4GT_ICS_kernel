@@ -394,6 +394,7 @@ deps_arch/arm/mach-exynos/sec_watchdog.o := \
     $(wildcard include/config/cpu/freq/default/gov/interactive.h) \
     $(wildcard include/config/cpu/freq/default/gov/adaptive.h) \
     $(wildcard include/config/cpu/freq/default/gov/pegasusq.h) \
+    $(wildcard include/config/cpu/freq/default/gov/smartass2.h) \
   include/linux/err.h \
   include/linux/irq.h \
     $(wildcard include/config/s390.h) \

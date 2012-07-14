@@ -53,7 +53,7 @@ loglevel 3
 	setprop audioflinger.bootsnd 1
 
 #add camera sound property for NA_SPR
-	setprop ro.camera.sound.forced 0
+	setprop ro.camera.sound.forced 1
 
 # Backwards Compat - XXX: Going away in G*
     symlink /mnt/sdcard /sdcard
@@ -155,9 +155,6 @@ on fs
 on post-fs
     exec sfsck /dev/block/mmcblk0p10 ext4
     mount ext4 /dev/block/mmcblk0p10 /data nosuid nodev noatime wait noauto_da_alloc
-
-# verfiy filesystem (UMS)
-	exec apply_system_policy /dev/block/mmcblk0p11 vfat
 
     # once everything is setup, no need to modify /
     mount rootfs rootfs / ro remount
@@ -272,10 +269,10 @@ on post-fs-data
     chown root root /data/lost+found
     chmod 0770 /data/lost+found
 
-    # workaround for potential bootloop in some ROMs
-    mkdir /data/system 0771
+    # create /data/system and double-check the perms, so as to enforce our permissions
+    mkdir /data/system 0775 system system
     chown system system /data/system
-    chmod 0771 /data/system
+    chmod 0775 /data/system
 
     # create directory for DRM plug-ins
     mkdir /data/drm 0774 drm drm
@@ -425,10 +422,6 @@ on boot
 # Write value must be consistent with the above properties.
 # Note that the driver only supports 6 slots, so we have combined some of
 # the classes into the same memory level; the associated processes of higher
-
-# sd card read speed fix
-    write /sys/block/mmcblk0p11/bdi/read_ahead_kb 2048
-    write /sys/block/cyasblkdevblk0p1/bdi/read_ahead_kb 2048
 # classes will still be killed first.
     write /sys/module/lowmemorykiller/parameters/adj 0,1,2,4,7,15
 

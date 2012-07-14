@@ -705,6 +705,7 @@ deps_arch/arm/mach-exynos/stand-hotplug.o := \
     $(wildcard include/config/cpu/freq/default/gov/interactive.h) \
     $(wildcard include/config/cpu/freq/default/gov/adaptive.h) \
     $(wildcard include/config/cpu/freq/default/gov/pegasusq.h) \
+    $(wildcard include/config/cpu/freq/default/gov/smartass2.h) \
   arch/arm/plat-samsung/include/plat/map-base.h \
     $(wildcard include/config/s3c/base/addr.h) \
   arch/arm/plat-samsung/include/plat/gpio-cfg.h \

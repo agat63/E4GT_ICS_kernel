@@ -474,6 +474,7 @@ deps_arch/arm/plat-samsung/clock.o := \
     $(wildcard include/config/cpu/freq/default/gov/interactive.h) \
     $(wildcard include/config/cpu/freq/default/gov/adaptive.h) \
     $(wildcard include/config/cpu/freq/default/gov/pegasusq.h) \
+    $(wildcard include/config/cpu/freq/default/gov/smartass2.h) \
   arch/arm/plat-samsung/include/plat/clock.h \
   include/linux/clkdev.h \
   /home/tigran/ICS/kernels/stock/arch/arm/include/asm/clkdev.h \

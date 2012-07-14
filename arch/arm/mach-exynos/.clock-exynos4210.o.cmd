@@ -162,6 +162,7 @@ deps_arch/arm/mach-exynos/clock-exynos4210.o := \
     $(wildcard include/config/cpu/freq/default/gov/interactive.h) \
     $(wildcard include/config/cpu/freq/default/gov/adaptive.h) \
     $(wildcard include/config/cpu/freq/default/gov/pegasusq.h) \
+    $(wildcard include/config/cpu/freq/default/gov/smartass2.h) \
   include/linux/mutex.h \
     $(wildcard include/config/debug/mutexes.h) \
     $(wildcard include/config/debug/lock/alloc.h) \

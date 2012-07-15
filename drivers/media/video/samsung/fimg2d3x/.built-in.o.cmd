@@ -1,0 +1,1 @@
+cmd_drivers/media/video/samsung/fimg2d3x/built-in.o :=  /home/tigran/ICS/toolchain/2009q3-68/bin/arm-none-eabi-ld -EL    -r -o drivers/media/video/samsung/fimg2d3x/built-in.o drivers/media/video/samsung/fimg2d3x/fimg2d_dev.o drivers/media/video/samsung/fimg2d3x/fimg2d_cache.o drivers/media/video/samsung/fimg2d3x/fimg2d3x_regs.o drivers/media/video/samsung/fimg2d3x/fimg2d_core.o 

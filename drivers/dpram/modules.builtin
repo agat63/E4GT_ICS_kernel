@@ -1,0 +1,2 @@
+kernel/drivers/dpram/raffaello/dpram.ko
+kernel/drivers/dpram/raffaello/dpram_recovery.ko

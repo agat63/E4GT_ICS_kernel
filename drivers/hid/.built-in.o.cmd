@@ -1,0 +1,1 @@
+cmd_drivers/hid/built-in.o :=  /home/tigran/ICS/toolchain/2009q3-68/bin/arm-none-eabi-ld -EL    -r -o drivers/hid/built-in.o drivers/hid/hid.o drivers/hid/hid-apple.o drivers/hid/hid-elecom.o drivers/hid/hid-magicmouse.o drivers/hid/hid-samsung.o drivers/hid/hid-wacom.o 

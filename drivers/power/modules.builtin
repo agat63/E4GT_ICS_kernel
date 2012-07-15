@@ -1,5 +1,0 @@
-kernel/drivers/power/power_supply.ko
-kernel/drivers/power/max8997_charger_u1.ko
-kernel/drivers/power/max8922_charger_u1.ko
-kernel/drivers/power/sec_battery_u1.ko
-kernel/drivers/power/max17042_fuelgauge_u1.ko

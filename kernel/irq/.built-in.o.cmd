@@ -1,1 +1,0 @@
-cmd_kernel/irq/built-in.o :=  /home/tigran/ICS/toolchain/2009q3-68/bin/arm-none-eabi-ld -EL    -r -o kernel/irq/built-in.o kernel/irq/irqdesc.o kernel/irq/handle.o kernel/irq/manage.o kernel/irq/spurious.o kernel/irq/resend.o kernel/irq/chip.o kernel/irq/dummychip.o kernel/irq/devres.o kernel/irq/generic-chip.o kernel/irq/autoprobe.o kernel/irq/proc.o kernel/irq/pm.o 

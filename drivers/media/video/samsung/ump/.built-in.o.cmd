@@ -1,1 +1,0 @@
-cmd_drivers/media/video/samsung/ump/built-in.o :=  /home/tigran/ICS/toolchain/2009q3-68/bin/arm-none-eabi-ld -EL    -r -o drivers/media/video/samsung/ump/built-in.o drivers/media/video/samsung/ump/ump.o 

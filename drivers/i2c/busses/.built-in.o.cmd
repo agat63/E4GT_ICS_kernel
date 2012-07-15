@@ -1,1 +1,0 @@
-cmd_drivers/i2c/busses/built-in.o :=  /home/tigran/ICS/toolchain/2009q3-68/bin/arm-none-eabi-ld -EL    -r -o drivers/i2c/busses/built-in.o drivers/i2c/busses/i2c-gpio.o drivers/i2c/busses/i2c-s3c2410.o 

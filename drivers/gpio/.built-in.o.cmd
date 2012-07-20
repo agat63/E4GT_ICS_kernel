@@ -1,1 +1,0 @@
-cmd_drivers/gpio/built-in.o :=  /home/tigran/ICS/toolchain/2009q3-68/bin/arm-none-eabi-ld -EL    -r -o drivers/gpio/built-in.o drivers/gpio/gpiolib.o drivers/gpio/gpio-exynos4.o drivers/gpio/gpio-plat-samsung.o 

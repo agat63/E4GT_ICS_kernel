@@ -1,1 +1,0 @@
-cmd_drivers/net/wimax_cmc/built-in.o :=  /home/tigran/ICS/toolchain/2009q3-68/bin/arm-none-eabi-ld -EL    -r -o drivers/net/wimax_cmc/built-in.o drivers/net/wimax_cmc/wimax_sdio.o drivers/net/wimax_cmc/firmware.o drivers/net/wimax_cmc/wimax_i2c.o 

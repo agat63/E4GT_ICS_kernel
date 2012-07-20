@@ -1,1 +1,0 @@
-cmd_sound/soc/samsung/srp_ulp/built-in.o :=  /home/tigran/ICS/toolchain/2009q3-68/bin/arm-none-eabi-ld -EL    -r -o sound/soc/samsung/srp_ulp/built-in.o sound/soc/samsung/srp_ulp/srp.o sound/soc/samsung/srp_ulp/srp_fw.o 

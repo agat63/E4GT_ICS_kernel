@@ -1,4 +1,0 @@
-kernel/drivers/leds/leds-gpio.ko
-kernel/drivers/leds/ledtrig-timer.ko
-kernel/drivers/leds/ledtrig-default-on.ko
-kernel/drivers/leds/ledtrig-notification.ko

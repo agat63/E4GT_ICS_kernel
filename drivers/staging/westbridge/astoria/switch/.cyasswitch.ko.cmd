@@ -1,0 +1,1 @@
+cmd_drivers/staging/westbridge/astoria/switch/cyasswitch.ko := /home/tigran/ICS/toolchain/toolchains-4.4.3/bin/arm-eabi-ld -EL -r  -T /home/tigran/ICS/kernels/stock_old/scripts/module-common.lds --build-id  -o drivers/staging/westbridge/astoria/switch/cyasswitch.ko drivers/staging/westbridge/astoria/switch/cyasswitch.o drivers/staging/westbridge/astoria/switch/cyasswitch.mod.o

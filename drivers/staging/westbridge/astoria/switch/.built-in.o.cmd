@@ -1,1 +1,0 @@
-cmd_drivers/staging/westbridge/astoria/switch/built-in.o :=  rm -f drivers/staging/westbridge/astoria/switch/built-in.o; /home/tigran/ICS/toolchain/toolchains-4.4.3/bin/arm-eabi-ar rcs drivers/staging/westbridge/astoria/switch/built-in.o

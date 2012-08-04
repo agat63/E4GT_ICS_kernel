@@ -1,4 +1,0 @@
-kernel/drivers/sensor/ak8975.ko
-kernel/drivers/sensor/cm3663.ko
-kernel/drivers/sensor/k3g.ko
-kernel/drivers/sensor/k3dh.ko

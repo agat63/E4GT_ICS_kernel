@@ -1,1 +1,0 @@
-cmd_drivers/dpram/built-in.o :=  /home/tigran/ICS/toolchain/toolchains-4.4.3/bin/arm-eabi-ld -EL    -r -o drivers/dpram/built-in.o drivers/dpram/raffaello/dpram.o drivers/dpram/raffaello/dpram_recovery.o 

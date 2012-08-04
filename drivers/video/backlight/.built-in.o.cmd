@@ -1,1 +1,0 @@
-cmd_drivers/video/backlight/built-in.o :=  /home/tigran/ICS/toolchain/toolchains-4.4.3/bin/arm-eabi-ld -EL    -r -o drivers/video/backlight/built-in.o drivers/video/backlight/lcd.o drivers/video/backlight/backlight.o 

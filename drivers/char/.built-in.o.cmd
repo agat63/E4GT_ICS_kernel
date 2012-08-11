@@ -1,1 +1,0 @@
-cmd_drivers/char/built-in.o :=  /home/tigran/ICS/toolchain/toolchains-4.4.3/bin/arm-eabi-ld -EL    -r -o drivers/char/built-in.o drivers/char/mem.o drivers/char/random.o drivers/char/misc.o drivers/char/hw_random/built-in.o drivers/char/s3c_mem.o drivers/char/exynos_mem.o 

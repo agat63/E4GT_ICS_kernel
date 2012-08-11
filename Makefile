@@ -2,7 +2,7 @@ VERSION = 3
 PATCHLEVEL = 0
 SUBLEVEL = 15
 EXTRAVERSION =
-NAME = AGAT_test_1
+NAME = AGAT_ExTweaks
 
 # *DOCUMENTATION*
 # To see a list of typical targets execute "make help"

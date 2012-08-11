@@ -73,11 +73,7 @@ UTS_TRUNCATE="cut -b -$UTS_LEN"
 
   echo \#define UTS_VERSION \"`echo $UTS_VERSION | $UTS_TRUNCATE`\"
 
-<<<<<<< HEAD
-  echo \#define LINUX_COMPILE_BY \"AGAT_v0.4.3\"
-=======
-  echo \#define LINUX_COMPILE_BY \"AGAT_v0.4.2\"
->>>>>>> 474f56443dd0b5a4f2e160079f89f0d6d8465f2f
+  echo \#define LINUX_COMPILE_BY \"AGAT_v0.4.4\"
   echo \#define LINUX_COMPILE_HOST \" \"
 
   echo \#define LINUX_COMPILER \"`$CC -v 2>&1 | tail -n 1`\"

@@ -1,5 +1,8 @@
 #!/sbin/busybox sh
 # custom script helper by Gokhan Moral
+# This Script is made by gokhanmoral
+# I have just made needed adjustments to fit the needs for AgatKernel
+# i do not take any credits for this File and related ones !
 
 DEFAULT_PROFILE=/res/customconfig/default.profile
 BATTERY_PROFILE=/res/customconfig/battery.profile
@@ -19,10 +22,14 @@ apply_config()
 {
 while read_dom; do
 action=$(echo $ENTITY |  grep -v \<button | sed -e 's/action=/\naction=/g' |grep action|awk -F'"' '{print $2}')
-if [ "a$action" != a ];then
-  actionval=`/res/uci.sh $action`
-  echo applying: /res/uci.sh $action $actionval
-  eval /res/uci.sh $action $actionval
+if [ "a${action}" != a ];
+then
+  if [ "${action}" != "non-boot/scrcolor_reset 1" ];
+  then
+    actionval=`/res/uci.sh $action`
+    echo applying: /res/uci.sh $action $actionval
+    eval /res/uci.sh $action $actionval
+  fi
 fi
 done < $CONFIG_XML
 }
@@ -46,20 +53,21 @@ select_profile()
     # if there is no such profile, create one
     _ACTIVE_PROFILE=`cat $ACTIVE_PROFILE`
     if [ ! -f ${PROFILE_PATH}/${_ACTIVE_PROFILE}.profile ];then
-      cp $DEFAULT_PROFILE ${PROFILE_PATH}/${1}.profile
-      [ "$_ACTIVE_PROFILE" == "battery" ] && cp $BATTERY_PROFILE ${PROFILE_PATH}/${1}.profile
-      [ "$_ACTIVE_PROFILE" == "performance" ] && cp $PERFORMANCE_PROFILE ${PROFILE_PATH}/${1}.profile
+      cp ${DEFAULT_PROFILE} ${PROFILE_PATH}/${1}.profile
+      [ "${_ACTIVE_PROFILE}" == "battery" ] && cp ${BATTERY_PROFILE} ${PROFILE_PATH}/${1}.profile
+      [ "${_ACTIVE_PROFILE}" == "performance" ] && cp ${PERFORMANCE_PROFILE} ${PROFILE_PATH}/${1}.profile
     fi
     if [ ! -f ${PROFILE_PATH}/${1}.profile ];then
       cp ${PROFILE_PATH}/${_ACTIVE_PROFILE}.profile ${PROFILE_PATH}/${1}.profile
     fi
-    echo $1 > $ACTIVE_PROFILE
+    echo $1 > ${ACTIVE_PROFILE}
   fi
+  # chmod 777 ${PROFILE_PATH}/${1}.profile
 }
 
 delete_profile()
 {
-  if [ "`cat $ACTIVE_PROFILE`" == "$1" ];then
+  if [ "`cat $ACTIVE_PROFILE`" == "${1}" ];then
     select_profile "default"
   fi
   rm ${PROFILE_PATH}/${1}.profile
@@ -72,7 +80,7 @@ rename_profile()
 
   # if old profile is active, set the new profile as active profile
   if [ "`cat $ACTIVE_PROFILE`" == "$1" ];then
-    echo $2 > $ACTIVE_PROFILE
+    echo $2 > ${ACTIVE_PROFILE}
   fi
 }
 
@@ -93,6 +101,7 @@ write_config()
     fi
   done < $DEFAULT_PROFILE > $TEMP_CONFIG
   cp $TEMP_CONFIG $_CONFIG_FILE
+  chmod 777 $_CONFIG_FILE
   rm -f $TEMP_CONFIG
 }
 
@@ -125,14 +134,21 @@ read_defaults ()
 
 if [ ! -f $PROFILE_PATH/$LAST_SELECTED ];then 
   echo default > $PROFILE_PATH/$LAST_SELECTED
+  chmod 777 $PROFILE_PATH/$LAST_SELECTED
 fi
 
-if [ ! -f $PROFILE_PATH/default.profile ];then
+if [ ! -f $PROFILE_PATH/default.profile ];
+then
   cp $DEFAULT_PROFILE $PROFILE_PATH/default.profile
+  chmod 777 $PROFILE_PATH/default.profile
 fi
-if [ ! -f $PROFILE_PATH/battery.profile ];then
+if [ ! -f $PROFILE_PATH/battery.profile ];
+then
   cp $BATTERY_PROFILE $PROFILE_PATH/battery.profile
+  chmod 777 $PROFILE_PATH/battery.profile
 fi
-if [ ! -f $PROFILE_PATH/performance.profile ];then
+if [ ! -f $PROFILE_PATH/performance.profile ];
+then
   cp $PERFORMANCE_PROFILE $PROFILE_PATH/performance.profile
+  chmod 777 $PROFILE_PATH/performance.profile
 fi

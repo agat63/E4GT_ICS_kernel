@@ -1,6 +1,6 @@
 #!/sbin/busybox sh
 # root installation helper by GM
-rm /data/.agat/install-root > /dev/null 2>&1
+rm /data/.dream/install-root > /dev/null 2>&1
 (
 while : ; do
 	# keep this running until we have root

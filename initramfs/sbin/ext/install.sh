@@ -1,4 +1,7 @@
 #!/sbin/busybox sh
+# AgatKernel v2.x Bin installer
+# Script by gokhanmoral
+# i do not tak any Credits for this ! Talustus
 
 extract_payload()
 {
@@ -71,7 +74,7 @@ then
 fi
 
 echo "liblights..."
-romtype=`cat /proc/sys/kernel/rom_feature_set`
+# romtype=`cat /proc/sys/kernel/rom_feature_set`
 # only for non-cm7 roms
 #if [ "${romtype}a" == "0a" ];
 #then
@@ -99,6 +102,22 @@ then
   xzcat /res/misc/payload/ntfs-3g.xz > /system/xbin/ntfs-3g
   chown 0.0 /system/xbin/ntfs-3g
   chmod 755 /system/xbin/ntfs-3g
+fi
+
+# NEW .. IPv6 Tunnel support
+echo "IPv6Tun Support"
+if [ -f /system/.agat/.noipv6 ];
+then
+  echo 0 > /system/.agat/ipv6-installed
+else
+  if [ ! -f /system/app/IPv6Tun.apk ];
+  then
+    # rm /system/app/IPv6Tun.apk
+    xzcat /res/misc/payload/IPv6Tun.apk.xz > /system/app/IPv6Tun.apk
+    chown 0.0 /system/app/IPv6Tun.apk
+    chmod 644 /system/app/IPv6Tun.apk
+    echo 1 > /system/.agat/ipv6-installed
+  fi
 fi
 
 rm -rf /res/misc/payload

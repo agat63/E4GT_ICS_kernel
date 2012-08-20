@@ -1,16 +1,18 @@
 #!/sbin/busybox sh
-# Logging
-#/sbin/busybox cp /data/user.log /data/user.log.bak
-#/sbin/busybox rm /data/user.log
-#exec >>/data/user.log
-#exec 2>&1
-
+#
+## Create the kernel data directory
 mkdir /data/.agat
 chmod 777 /data/.agat
+
+## Enable "post-init" Logging do not enable if /sbin/init is already logging ...
+mv /data/.agat/post-init.log /data/.agat/post-init.log.bak
+busybox date >/data/.agat/post-init.log
+exec >>/data/.agat/post-init.log 2>&1
+
 ccxmlsum=`md5sum /res/customconfig/customconfig.xml | awk '{print $1}'`
 if [ "a${ccxmlsum}" != "a`cat /data/.agat/.ccxmlsum`" ];
 then
-#  rm -f /data/.agat/*.profile
+  rm -f /data/.agat/*.profile
   echo ${ccxmlsum} > /data/.agat/.ccxmlsum
 fi
 [ ! -f /data/.agat/default.profile ] && cp /res/customconfig/default.profile /data/.agat
@@ -21,10 +23,11 @@ fi
 read_defaults
 read_config
 
-#cpu undervolting
+## cpu undervolting
 echo "${cpu_undervolting}" > /sys/devices/system/cpu/cpu0/cpufreq/vdd_levels
 
-#change cpu step count
+## change cpu step counts
+chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
 case "${cpustepcount}" in
   5)
     echo 1200 1000 800 500 200 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
@@ -46,12 +49,11 @@ case "${cpustepcount}" in
     ;;
 esac;
 
-if [ "$logger" == "on" ];then
-insmod /lib/modules/logger.ko
-fi
-
-# disable debugging on some modules
-if [ "$logger" == "off" ];then
+## Android Logger
+if [ "${logger}" == "on" ];then
+  insmod /lib/modules/logger.ko
+else
+  ## disable debugging on some modules
   rm -rf /dev/log
   echo 0 > /sys/module/ump/parameters/ump_debug_level
   echo 0 > /sys/module/mali/parameters/mali_debug_level
@@ -64,22 +66,24 @@ if [ "$logger" == "off" ];then
   echo 0 > /sys/module/xt_qtaguid/parameters/debug_mask
 fi
 
-#apply last soundgasm level on boot
-/res/uci.sh soundgasm_hp $soundgasm_hp
+#enable kmem interface for everyone by GM.
+echo 0 > /proc/sys/kernel/kptr_restrict
 
-# for ntfs automounting
-insmod /lib/modules/fuse.ko
+# Set color mode to user mode
+echo "1" > /sys/devices/platform/samsung-pd.2/mdnie/mdnie/mdnie/user_mode
+
+## for ntfs automounting
+# insmod /lib/modules/fuse.ko
 mkdir /mnt/ntfs
 mount -t tmpfs tmpfs /mnt/ntfs
 chmod 777 /mnt/ntfs
-
-#/sbin/busybox sh /sbin/ext/busybox.sh
 
 /sbin/busybox sh /sbin/ext/properties.sh
 
 /sbin/busybox sh /sbin/ext/install.sh
 
-# run this because user may have chosen not to install root at boot but he may need it later and install it using ExTweaks
+## run this because user may have chosen not to install root at boot
+## but he may need it later and install it using ExTweaks
 /sbin/busybox sh /sbin/ext/su-helper.sh
 
 ##### Early-init phase tweaks #####
@@ -97,12 +101,11 @@ sleep 30
 # apply ExTweaks defaults
 /res/uci.sh apply
 
+/res/uci.sh soundgasm_hp ${soundgasm_hp}
+/res/customconfig/actions/usb-mode ${usb_mode}
+
 ##### init scripts #####
 (
 /sbin/busybox sh /sbin/ext/run-init-scripts.sh
 )&
 
-#usb mode
-/res/customconfig/actions/usb-mode ${usb_mode}
-#read sync < /data/sync_fifo
-#rm /data/sync_fifo

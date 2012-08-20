@@ -34,7 +34,7 @@ do
 	fi;
 	#CFQ specific
 	if [ -e $i/queue/iosched/back_seek_penalty ];
-	then 
+	then
 		echo 1 > $i/queue/iosched/back_seek_penalty;
 	fi;
 	#CFQ specific
@@ -44,7 +44,7 @@ do
 	fi;
 	#CFQ Specific
 	if [ -e $i/queue/iosched/slice_idle ];
-	then 
+	then
 		echo 0 > $i/queue/iosched/slice_idle; # previous: 1
 	fi;
 	# deadline/VR/SIO scheduler specific
@@ -63,12 +63,12 @@ do
 	fi;
 	#CFQ specific
 	if [ -e $i/queue/iosched/slice_async_rq ];
-	then 
+	then
 		echo 4 > $i/queue/iosched/slice_async_rq;
 	fi;
 	#CFQ specific
 	if [ -e $i/queue/iosched/back_seek_max ];
-	then 
+	then
 		echo 1000000000 > $i/queue/iosched/back_seek_max;
 	fi;
 	#VR Specific
